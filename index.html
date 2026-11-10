@@ -3,41 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio AI Pro - استوديو إنتاج الموشن جرافيك الذكي</title>
+    <title>Studio AI Pro - استوديو الـ 30 نمطاً الأسطوري</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; }
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+        .style-card.active { border-color: #6366f1; background-color: rgba(99, 102, 241, 0.15); }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col select-none">
 
     <!-- Header / Navbar -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 py-4 flex flex-wrap justify-between items-center gap-4 sticky top-0 z-50">
+    <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur-md px-6 py-4 flex justify-between items-center sticky top-0 z-50">
         <div class="flex items-center gap-3">
-            <div class="p-2.5 bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 rounded-xl shadow-lg shadow-indigo-600/20">
+            <div class="p-2.5 bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 rounded-xl shadow-lg shadow-indigo-600/30">
                 <svg class="w-5 h-5 text-white animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 00 2 2z"/>
                 </svg>
             </div>
             <div>
                 <h1 class="text-lg font-black tracking-wider text-white flex items-center gap-2">
-                    STUDIO AI <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">PRO</span>
+                    ULTRA STUDIO <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">30 MATRIX</span>
                 </h1>
-                <p class="text-[11px] text-slate-400">محرك الإنتاج السينمائي والموشن جرافيك المستقل</p>
+                <p class="text-[11px] text-slate-400">استوديو الوكلاء الـ 8 - 30 نمطاً سينمائياً × 3 خصائص فرعية</p>
             </div>
         </div>
 
         <div class="flex items-center gap-3">
             <div class="flex items-center gap-2 text-xs font-mono bg-slate-900 border border-slate-800 px-3.5 py-1.5 rounded-full">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                <span class="text-slate-400">حالة السيرفر:</span>
-                <span class="text-emerald-400 font-bold">نشط ومصلح 100%</span>
+                <span class="text-slate-400">WebSockets:</span>
+                <span id="wsStatus" class="text-emerald-400 font-bold">متصل بـ Live Direct</span>
             </div>
         </div>
     </header>
@@ -45,81 +46,56 @@
     <!-- Main Workspace Dashboard -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        <!-- Column 1 & 2: Motion Graphic Production Generator -->
-        <div class="lg:col-span-2 bg-slate-900/60 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col justify-between shadow-2xl backdrop-blur-sm">
-            <div class="space-y-6">
-                
-                <div class="border-b border-slate-800/80 pb-4">
-                    <h2 class="text-base font-bold text-slate-100 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                        إنتاج فيديو موشن جرافيك حقيقي بالذكاء الاصطناعي
-                    </h2>
-                    <p class="text-xs text-slate-400 mt-1">
-                        أدخل تفاصيل وموضوع التقرير الإخباري أو الإعلاني ليقوم محرك الميكروسيرفر بجلب الأخبار ومونتاج الفيديو في ثوانٍ.
-                    </p>
-                </div>
-
-                <!-- Input Topic Form -->
-                <div class="space-y-2">
-                    <label class="text-xs font-semibold text-slate-300 flex justify-between items-center">
-                        <span>موضوع التقرير أو الإعلان:</span>
-                        <span class="text-[10px] text-indigo-400 font-mono">Live Grounding + MCP</span>
-                    </label>
-                    <textarea id="topicInput" rows="4" 
-                        class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3.5 text-xs text-slate-100 focus:outline-none focus:border-indigo-500 placeholder:text-slate-500 leading-relaxed transition" 
-                        placeholder="أكتب موضوع الفيديو المطلوب تفصيلاً، مثال: أحدث تطورات الذكاء الاصطناعي في الطب لعام 2026 وتأثيره على الجراحات الدقيقة..."></textarea>
-                </div>
-
-                <!-- Model & Duration Options -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="space-y-2">
-                        <label class="text-xs font-semibold text-slate-300">نموذج الرسم البصري:</label>
-                        <select id="modelSelect" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 outline-none focus:border-indigo-500 transition">
-                            <option value="Ideogram 4.0">Ideogram 4.0 (أعلى دقة نصوص عربية)</option>
-                            <option value="Flux.1 Dev">Flux.1 Dev (إضاءة سينمائية داكنة)</option>
-                            <option value="Luma Dream Machine">Luma Dream Machine (حركة فوتوغرافية)</option>
-                        </select>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label class="text-xs font-semibold text-slate-300">مدة الفيديو المطلوب:</label>
-                        <select id="durationSelect" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 outline-none focus:border-indigo-500 transition">
-                            <option value="30">30 ثانية (مقاطع سريعة)</option>
-                            <option value="60" selected>60 ثانية (تقرير إخباري كامل - دقيقة)</option>
-                            <option value="90">90 ثانية (تحليل عميق)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Transitions Choice -->
-                <div class="space-y-2">
-                    <label class="text-xs font-semibold text-slate-300">نمط الانتقالات الفيزيائية (Remotion):</label>
-                    <select id="transitionSelect" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 outline-none focus:border-indigo-500 transition">
-                        <option value="Spring Warp Zoom">Spring Warp Zoom (زوم حركي متجاوب)</option>
-                        <option value="Light Leak Wipe">Light Leak Wipe (تأثير مسح الإضاءة السينمائية)</option>
-                        <option value="Cyber Glitch">Cyber Glitch (تأثير التشويه التقني)</option>
-                    </select>
-                </div>
-
+        <!-- Left 2 Columns: Input & 30 Styles Selection -->
+        <div class="lg:col-span-2 bg-slate-900/60 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col justify-between shadow-2xl backdrop-blur-sm space-y-6">
+            
+            <div>
+                <h2 class="text-base font-bold text-slate-100 flex items-center gap-2 mb-1">
+                    <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                    فكرة الفيديو والنص الإعلاني
+                </h2>
+                <textarea id="topicInput" rows="3" 
+                    class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-100 focus:outline-none focus:border-indigo-500 placeholder:text-slate-500 leading-relaxed transition" 
+                    placeholder="اكتب فكرة الفيديو بالتفصيل..."></textarea>
             </div>
 
-            <!-- Submit Button & Live Progress Tracker -->
-            <div class="mt-8 pt-6 border-t border-slate-800/80 space-y-4">
+            <!-- Sub-Property Selection (وثائقي / سينمائي / ديناميكي) -->
+            <div>
+                <label class="text-xs font-semibold text-slate-300 block mb-2">إعداد الخاصية الفرعي المستهدف (Sub-Property):</label>
+                <div class="grid grid-cols-3 gap-3">
+                    <button type="button" onclick="selectProperty('وثائقي')" id="prop-doc" class="prop-btn py-2.5 px-3 rounded-xl border border-slate-800 bg-slate-950 text-xs text-slate-300 flex items-center justify-center gap-2 transition hover:border-slate-700">
+                        📄 وثائقي (24fps)
+                    </button>
+                    <button type="button" onclick="selectProperty('سينمائي')" id="prop-cine" class="prop-btn active py-2.5 px-3 rounded-xl border border-indigo-600 bg-indigo-600/20 text-xs text-white font-bold flex items-center justify-center gap-2 transition">
+                        🎬 سينمائي (30fps)
+                    </button>
+                    <button type="button" onclick="selectProperty('ديناميكي')" id="prop-dyn" class="prop-btn py-2.5 px-3 rounded-xl border border-slate-800 bg-slate-950 text-xs text-slate-300 flex items-center justify-center gap-2 transition hover:border-slate-700">
+                        ⚡ ديناميكي (60fps)
+                    </button>
+                </div>
+            </div>
+
+            <!-- 30 Design Styles Grid Selector -->
+            <div>
+                <label class="text-xs font-semibold text-slate-300 block mb-2">اختر نمط التصميم الرئيسي (مصفوفة الـ 30 نمطاً):</label>
+                <div id="stylesGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-56 overflow-y-auto p-1 border border-slate-800/80 rounded-xl bg-slate-950">
+                    <!-- Javascript will inject 30 cards here -->
+                </div>
+            </div>
+
+            <!-- Action Button & Output Box -->
+            <div class="pt-4 border-t border-slate-800/80 space-y-4">
                 <button id="submitBtn" onclick="startProduction()" 
-                    class="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white font-bold text-xs shadow-xl shadow-indigo-600/25 transition transform active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    ابدأ إنتاج الموشن جرافيك الآن 🚀
+                    class="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white font-bold text-xs shadow-xl shadow-indigo-600/30 transition transform active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer">
+                    ابدأ إنتاج الموشن جرافيك السحابي 🚀
                 </button>
 
-                <!-- SSE Real-Time Progress Box -->
+                <!-- Live Progress Box -->
                 <div id="progressBox" class="hidden bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
                     <div class="flex justify-between items-center text-xs font-mono">
-                        <span id="progressStage" class="text-indigo-400 font-semibold">جاري تحضير الاتصال بالسيرفر...</span>
+                        <span id="progressStage" class="text-indigo-400 font-semibold">جاري بث البناء عبر WebSocket...</span>
                         <span id="progressPercent" class="text-slate-200 font-bold">0%</span>
                     </div>
                     <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
@@ -127,162 +103,174 @@
                     </div>
                 </div>
 
-                <!-- Video Output Result View -->
+                <!-- Video Result View -->
                 <div id="videoResultBox" class="hidden bg-slate-950 border border-emerald-800/60 rounded-xl p-4 space-y-3">
                     <div class="flex items-center justify-between text-xs text-emerald-400 font-bold">
-                        <span>✅ اكتمل الإنتاج بنجاح! جاهز للمعاينة:</span>
+                        <span>✅ اكتمل الإنتاج بالنمط المختار بنجاح:</span>
                         <a id="videoDownloadBtn" href="#" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded-lg text-[11px] transition">تنزيل الفيديو 📥</a>
                     </div>
                     <video id="outputVideoPlayer" controls class="w-full rounded-lg border border-slate-800 aspect-video bg-black"></video>
                 </div>
             </div>
+
         </div>
 
-        <!-- Column 3: AI Art Director & Quality Auditor Chat -->
-        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col h-[580px] shadow-2xl backdrop-blur-sm">
+        <!-- Right Column: AI Director Assistant Panel -->
+        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col h-[640px] shadow-2xl backdrop-blur-sm">
             <div class="border-b border-slate-800/80 pb-3 mb-4 flex items-center justify-between">
                 <div>
                     <h2 class="text-sm font-bold text-slate-100 flex items-center gap-2">
-                        <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                        </svg>
-                        المخرج الفني ومدقق الجودة
+                        المخرج كلود وتنسيق الأنيميشن
                     </h2>
-                    <p class="text-[11px] text-slate-400">خبير سينمائي بالذكاء الاصطناعي (20 عاماً خبرة)</p>
+                    <p class="text-[11px] text-slate-400">بث حي للبناء وتطبيق القواعد الحركية</p>
                 </div>
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse"></span>
             </div>
 
-            <!-- Messages Area -->
-            <div id="chatMessages" class="flex-1 bg-slate-950 border border-slate-800/80 rounded-xl p-3.5 overflow-y-auto space-y-3 text-xs leading-relaxed">
-                <div class="bg-slate-900 border border-slate-800 p-3 rounded-xl rounded-tr-none text-slate-300">
-                    أهلاً بك يا عبدالعزيز! أنا مخرجك الفني ومدقق الجودة الخبير. قمت بضبط إعدادات الألوان كـ (Teal & Orange) وتدقيق الحروف العربية لمنع التشوه. أكتب لي الموضوع في النموذج أو ناقشني هنا للتعديل المباشر!
+            <!-- Console Log Messages -->
+            <div id="chatMessages" class="flex-1 bg-slate-950 border border-slate-800/80 rounded-xl p-3.5 overflow-y-auto space-y-3 text-xs leading-relaxed font-mono">
+                <div class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-indigo-300">
+                    أهلاً بك! اختر واحداً من الـ 30 نمطاً، وحدد خاصية (وثائقي / سينمائي / ديناميكي) للبدء في البث الحركي.
                 </div>
             </div>
-
-            <!-- Chat Input Form -->
-            <form onsubmit="sendChatMessage(event)" class="mt-4 flex gap-2">
-                <input type="text" id="chatInput" 
-                    class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-indigo-500 placeholder:text-slate-500 transition" 
-                    placeholder="اطلب تعديل الإضاءة أو السيناريو...">
-                <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2.5 rounded-xl font-bold text-xs text-white transition shadow-md shadow-indigo-600/20 cursor-pointer">
-                    إرسال
-                </button>
-            </form>
         </div>
 
     </main>
 
-    <!-- Client-Side Interaction Script -->
     <script>
-        async function startProduction() {
-            const topic = document.getElementById('topicInput').value.trim();
-            const visualModel = document.getElementById('modelSelect').value;
-            const duration = parseInt(document.getElementById('durationSelect').value);
-            const transitionStyle = document.getElementById('transitionSelect').value;
+        const DESIGN_STYLES = [
+            "الموشن جرافيك الحديث (Minimal Motion)",
+            "فلوج وتيك توك (Viral TikTok/Reels)",
+            "الشرح التقني والمستقبلي (Cyberpunk/Tech)",
+            "الرسوم الكرتونية (2D/3D Cartoon)",
+            "السرد التراثي والتاريخي (Vintage/Historical)",
+            "الغموض والرعب النفسي (Dark Horror)",
+            "ريلز إنستغرام الجمالي (Aesthetic Minimalist)",
+            "النيون المضيء المتوهج (Glow Neon)",
+            "الخطوط العربية الحرة (Arabic Calligraphy Art)",
+            "قصص الكوميكس والمانجا (Comic/Manga)",
+            "العروض الهندسية المعمارية (Architectural Blueprint)",
+            "تصميم الطباشير والسبورة (Whiteboard Chalk)",
+            "أسلوب الجرائد الورقية (Vintage Newspaper)",
+            "النمط الرياضي الحماسي (Sports/Gym Kinetic)",
+            "الخيال العلمي والفضاء (Sci-Fi Deep Space)",
+            "عالم الألعاب والـ Pixel Art (8-Bit Gaming)",
+            "نمط المجلات الفاخرة (Luxury/Fashion Editorial)",
+            "السفر والمغامرات (Travel Vlog / Polaroid)",
+            "المظهر الورقي المقطع (Paper Collage/Stop-Motion)",
+            "الإعلانات السينمائية واللوحات الضخمة (Epic Cinematic Trailer)",
+            "الأسلوب الزيتي الفني (Oil Painting/Artistic)",
+            "الرسوم المائية الهادئة (Watercolor Splatter)",
+            "نمط شركات المليار (Corporate Tech Clean)",
+            "المونتاج السيكيدلي السريالي (Psychedelic/Surreal)",
+            "المحاكاة الواقعية وعناصر VFX (Photorealistic VFX)",
+            "الرسوم الطبية والبيولوجية (Medical/Sci-Explainer)",
+            "نمط الطبخ وصناعة الأطعمة (Cinematic Food/ASMR)",
+            "اللمسة الطينية Claymation (Clay/Plasticine)",
+            "أسلوب Vector الكرتوني المسطح (Flat Vector Animation)",
+            "النمط الكولونيالي العتيق (Retro 80s/90s VHS)"
+        ];
 
-            if (!topic) {
-                alert('الرجاء كتابة موضوع التقرير أو الفيديو أولاً!');
-                return;
-            }
+        let selectedStyle = DESIGN_STYLES[0];
+        let selectedProp = 'سينمائي';
+        let ws;
 
-            const submitBtn = document.getElementById('submitBtn');
-            const progressBox = document.getElementById('progressBox');
-            const progressBar = document.getElementById('progressBar');
-            const progressStage = document.getElementById('progressStage');
-            const progressPercent = document.getElementById('progressPercent');
-            const videoResultBox = document.getElementById('videoResultBox');
-            const outputVideoPlayer = document.getElementById('outputVideoPlayer');
-            const videoDownloadBtn = document.getElementById('videoDownloadBtn');
+        // Render 30 Style Cards
+        function initStylesGrid() {
+            const grid = document.getElementById('stylesGrid');
+            grid.innerHTML = '';
+            DESIGN_STYLES.forEach((style, idx) => {
+                const card = document.createElement('div');
+                card.className = `style-card p-2 rounded-lg border text-[11px] cursor-pointer transition flex items-center gap-1.5 ${idx === 0 ? 'active text-indigo-300 font-bold border-indigo-600' : 'border-slate-800 text-slate-400 bg-slate-900/40 hover:border-slate-700'}`;
+                card.innerText = `${idx + 1}. ${style}`;
+                card.onclick = () => {
+                    document.querySelectorAll('.style-card').forEach(c => c.classList.remove('active', 'text-indigo-300', 'font-bold', 'border-indigo-600'));
+                    card.classList.add('active', 'text-indigo-300', 'font-bold', 'border-indigo-600');
+                    selectedStyle = style;
+                };
+                grid.appendChild(card);
+            });
+        }
 
-            submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-50');
-            progressBox.classList.remove('hidden');
-            videoResultBox.classList.add('hidden');
-            progressBar.style.width = '0%';
-            progressPercent.innerText = '0%';
-            progressStage.innerText = 'إرسال الطلب ومحاكاة سير العمل...';
+        function selectProperty(prop) {
+            selectedProp = prop;
+            document.querySelectorAll('.prop-btn').forEach(btn => {
+                btn.className = 'prop-btn py-2.5 px-3 rounded-xl border border-slate-800 bg-slate-950 text-xs text-slate-300 flex items-center justify-center gap-2 transition hover:border-slate-700';
+            });
+            if (prop === 'وثائقي') document.getElementById('prop-doc').className = 'prop-btn active py-2.5 px-3 rounded-xl border border-indigo-600 bg-indigo-600/20 text-xs text-white font-bold flex items-center justify-center gap-2 transition';
+            if (prop === 'سينمائي') document.getElementById('prop-cine').className = 'prop-btn active py-2.5 px-3 rounded-xl border border-indigo-600 bg-indigo-600/20 text-xs text-white font-bold flex items-center justify-center gap-2 transition';
+            if (prop === 'ديناميكي') document.getElementById('prop-dyn').className = 'prop-btn active py-2.5 px-3 rounded-xl border border-indigo-600 bg-indigo-600/20 text-xs text-white font-bold flex items-center justify-center gap-2 transition';
+        }
 
-            try {
-                const response = await fetch('/api/v1/generate-motion-graphic', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        topic: topic,
-                        duration_seconds: duration,
-                        visual_model: visualModel,
-                        transition_style: transitionStyle
-                    })
-                });
+        function initWebSocket() {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            ws = new WebSocket(`${protocol}//${window.location.host}/ws/studio-director`);
 
-                const data = await response.json();
-                if (data.status === 'accepted') {
-                    const eventSource = new EventSource(data.stream_url);
+            ws.onopen = () => {
+                document.getElementById('wsStatus').innerText = 'متصل بـ Live Direct';
+                document.getElementById('wsStatus').className = 'text-emerald-400 font-bold';
+            };
 
-                    eventSource.onmessage = function(event) {
-                        const parsed = JSON.parse(event.data);
-                        progressBar.style.width = parsed.progress + '%';
-                        progressPercent.innerText = parsed.progress + '%';
-                        progressStage.innerText = parsed.stage;
+            ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                const progressBox = document.getElementById('progressBox');
+                const progressBar = document.getElementById('progressBar');
+                const progressStage = document.getElementById('progressStage');
+                const progressPercent = document.getElementById('progressPercent');
 
-                        if (parsed.status === 'completed') {
-                            eventSource.close();
-                            submitBtn.disabled = false;
-                            submitBtn.classList.remove('opacity-50');
-                            
-                            // Show Video Player Result
-                            videoResultBox.classList.remove('hidden');
-                            outputVideoPlayer.src = parsed.video_url;
-                            videoDownloadBtn.href = parsed.video_url;
-                            outputVideoPlayer.play();
+                progressBox.classList.remove('hidden');
+                progressBar.style.width = data.progress + '%';
+                progressPercent.innerText = data.progress + '%';
+                progressStage.innerText = data.message;
 
-                            // Notify in Chat
-                            appendChatMessage('assistant', `✨ اكتمل إنتاج الفيديو بنجاح لموضوع: "${topic}". يمكنك تشغيله وتنزيله الآن!`);
-                        }
-                    };
+                appendChatMessage(data.message);
 
-                    eventSource.onerror = function() {
-                        eventSource.close();
-                        submitBtn.disabled = false;
-                        submitBtn.classList.remove('opacity-50');
-                        progressStage.innerText = 'حدث خطأ في الاتصال بالسيرفر.';
-                    };
+                if (data.status === 'completed') {
+                    document.getElementById('submitBtn').disabled = false;
+                    document.getElementById('videoResultBox').classList.remove('hidden');
+                    document.getElementById('outputVideoPlayer').src = data.video_url;
+                    document.getElementById('videoDownloadBtn').href = data.video_url;
+                    document.getElementById('outputVideoPlayer').play();
                 }
-            } catch (err) {
-                alert('فشل الاتصال بالسيرفر. تأكد من تشغيل الباك إند.');
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-50');
+            };
+
+            ws.onclose = () => {
+                document.getElementById('wsStatus').innerText = 'غير متصل';
+                document.getElementById('wsStatus').className = 'text-rose-400 font-bold';
+                setTimeout(initWebSocket, 3000);
+            };
+        }
+
+        function startProduction() {
+            const topic = document.getElementById('topicInput').value.trim() || 'فيديو موشن جرافيك مستقبلي';
+            document.getElementById('submitBtn').disabled = true;
+
+            const payload = {
+                video_idea: topic,
+                design_style: selectedStyle,
+                property_setting: selectedProp
+            };
+
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify(payload));
+            } else {
+                alert('الرجاء الانتظار لحين اتصال السيرفر عبر الـ WebSocket.');
             }
         }
 
-        function sendChatMessage(e) {
-            e.preventDefault();
-            const input = document.getElementById('chatInput');
-            const val = input.value.trim();
-            if (!val) return;
-
-            appendChatMessage('user', val);
-            input.value = '';
-
-            setTimeout(() => {
-                appendChatMessage('assistant', `تم استلام ملاحظتك: "${val}". قمت بتعديل البرومبت وتثبيت نمط الحركة السينمائية في المحرك بنجاح.`);
-            }, 700);
-        }
-
-        function appendChatMessage(sender, text) {
+        function appendChatMessage(text) {
             const chatMessages = document.getElementById('chatMessages');
             const msgDiv = document.createElement('div');
-            
-            if (sender === 'user') {
-                msgDiv.className = 'bg-indigo-950/80 border border-indigo-800/60 p-3 rounded-xl rounded-tl-none text-indigo-100 text-left';
-            } else {
-                msgDiv.className = 'bg-slate-900 border border-slate-800 p-3 rounded-xl rounded-tr-none text-slate-300';
-            }
-            
-            msgDiv.innerText = text;
+            msgDiv.className = 'bg-slate-900 border border-slate-800 p-2.5 rounded-lg text-emerald-400 font-mono';
+            msgDiv.innerText = `> ${text}`;
             chatMessages.appendChild(msgDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
+
+        window.onload = () => {
+            initStylesGrid();
+            initWebSocket();
+        };
     </script>
 </body>
 </html>
