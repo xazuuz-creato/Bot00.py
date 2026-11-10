@@ -3,11 +3,11 @@ uvicorn==0.28.0
 pydantic==2.6.4
 slowapi==0.1.9
 httpx==0.27.0
-arabic-reshaper==3.0.0
-python-bidi==0.4.2
+arabic-reshaper
+python-bidi
 moviepy==1.0.3
 av
-redis==5.0.1
-supabase==2.3.0
-crewai-tools==0.1.0
-websockets==12.0
+redis
+supabase
+crewai-tools
+websockets
